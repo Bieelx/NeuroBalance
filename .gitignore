@@ -40,5 +40,5 @@ yarn-error.*
 /ios
 /android
 
-#Firebase
-./firebaseConfig.js
+# Firebase
+firebaseConfig.js
