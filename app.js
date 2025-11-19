@@ -5,16 +5,12 @@ import { auth } from './firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
-// Importa as Nossas Telas
 import OnboardingScreen from './src/screens/OnboardingScreen';
 import AuthScreen from './src/screens/AuthScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
-import CheckinScreen from './src/screens/ChekinScreen'; 
-
-// --- NOVO ---
-// Importa o nosso novo Navegador de Abas
 import AppTabs from './src/navigation/AppTabs';
+import TeamReportScreen from './src/screens/TeamReportScreen'; 
 
 const Stack = createStackNavigator();
 
@@ -42,16 +38,11 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          // --- STACK UTILIZADOR AUTENTICADO (MODIFICADO) ---
           <>
-            {/* A tela principal agora é o conjunto de Abas */}
             <Stack.Screen name="AppTabs" component={AppTabs} />
-            
-            {/* A tela de Checkin abre 'por cima' das abas */}
-            <Stack.Screen name="Checkin" component={CheckinScreen} />
+            <Stack.Screen name="TeamReport" component={TeamReportScreen} />
           </>
         ) : (
-          // --- STACK UTILIZADOR NÃO AUTENTICADO ---
           <>
             <Stack.Screen name="Onboarding" component={OnboardingScreen} />
             <Stack.Screen name="Auth" component={AuthScreen} />

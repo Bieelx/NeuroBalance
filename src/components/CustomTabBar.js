@@ -138,7 +138,9 @@ safeArea: {
   position: 'absolute',
   bottom: 0,
   width: '100%',
+  zIndex: 999,
 },
+
 wrapper: {
   alignSelf: 'center',
   width: 361,
@@ -146,12 +148,21 @@ wrapper: {
   marginBottom: Platform.OS === 'ios' ? 16 : 20,
   backgroundColor: 'transparent',
   overflow: 'visible',
+  borderRadius: 32,
   shadowColor: '#000',
-  shadowOffset: { width: 0, height: 10 },
-  shadowOpacity: 0.25,
+  shadowOffset: { width: 0, height: 25 },
+  shadowOpacity: 0.5,
   shadowRadius: 50,
   elevation: 30,
-  borderRadius: 32,  
+},
+
+topLine: {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  height: 1,
+  width: '100%',
+  backgroundColor: 'transparent',
 },
   backgroundGradient: {
     position: 'absolute',
@@ -223,11 +234,5 @@ wrapper: {
     lineHeight: 17,
     letterSpacing: -0.05,
     color: '#62748E',
-  },
-  topLine: {
-    position: 'absolute',
-    top: 0,
-    height: 1,
-    width: '100%',
   },
 });

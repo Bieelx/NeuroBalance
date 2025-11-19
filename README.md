@@ -102,6 +102,26 @@ npx expo start --clear
 
 **Escaneie** o QR Code com o app Expo Go no seu **celular**.
 
+## Justificativa Técnica (PL/SQL vs. Firebase)
+
+O desafio apresentava o requisito de implementar rotinas PL/SQL (Oracle/SQL) e, ao mesmo tempo, permitia o uso de React Native.
+
+Para este protótipo, selecionamos a arquitetura **React Native + Firebase (Firestore)** por ser a combinação mais moderna e eficiente para desenvolvimento rápido (sprint), escalabilidade e integração mobile. O Firebase é um banco de dados NoSQL (Documentos), que não é compatível com PL/SQL.
+
+Para cumprir o requisito acadêmico:
+1.  **Na Documentação:** Entregamos a modelagem relacional (MER/DER) e o código PL/SQL que representam a lógica de negócio do app (ver `MODELAGEM_E_AUTOMACAO.md`).
+2.  **Na Prática (App):** A "rotina de controle de desempenho" foi implementada usando a ferramenta equivalente no ecossistema Firebase: uma **Cloud Function** (automação serverless em JavaScript/TypeScript) que é disparada por gatilhos do Firestore, ou, como atalho de sprint, a lógica de agregação é executada no front-end no momento do check-in.
+
+## Boas Práticas de Gerenciamento de Memória
+
+Para garantir a eficiência do aplicativo, seguimos as seguintes práticas de gerenciamento de memória do React Native:
+
+1.  **Uso do `LinearAccelerationSensor` (Expo):** Optamos pelo sensor de aceleração linear em vez do acelerômetro padrão. Isso delega ao sistema operacional (SO) a tarefa de filtrar a gravidade, economizando cálculos (e bateria) no lado do JavaScript.
+2.  **Listeners de Sensor Inteligentes (`useIsFocused`):** Nossos sensores de hardware (acelerômetro) só são ligados (`.addListener()`) quando a tela "Saúde" está em foco (ativa). Quando o usuário sai da tela, o listener é removido (`.remove()`), impedindo o processamento de dados em segundo plano e liberando memória.
+3.  **Componentes Funcionais e Hooks:** O código utiliza 100% de componentes funcionais e Hooks (`useState`, `useEffect`). Isso evita o overhead de classes do React e facilita o *garbage collection*.
+4.  **FlatList/ScrollView:** Embora não tenhamos longas listas neste MVP, a estrutura está pronta para usar `FlatList` (que virtualiza linhas) em vez de `ScrollView` (que renderiza tudo) para futuras telas de histórico.
+5.  **Limpeza de Listeners (`useEffect`):** Todos os listeners (como o `onAuthStateChanged` do Firebase e os sensores) são devidamente limpos na função de retorno do `useEffect`, prevenindo "vazamentos de memória" (memory leaks) quando os componentes são desmontados.
+
 ## Visão Futura (Próximos Passos)
 
   * [ ] Implementar a gravação de voz na `CheckinScreen`.
@@ -109,8 +129,3 @@ npx expo start --clear
   * [ ] Salvar os resultados do check-in (humor, estresse) no Firestore.
   * [ ] Substituir os dados fictícios da tela `Análises` pelos dados reais do Firestore.
   * [ ] Iniciar a integração com HealthKit (iOS) e Health Connect (Android).
-
-<!-- end list -->
-
-```
-```
