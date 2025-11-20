@@ -35,7 +35,7 @@ const TeamReportScreen = ({ navigation }) => {
           <Text style={styles.cardTitle}>Nível de Stress Médio</Text>
           <Text style={styles.cardSubtitle}>Baseado nos últimos check-ins da equipe</Text>
 
-          {/* --- GRÁFICO DE ANEL DINÂMICO (CORRIGIDO) --- */}
+          { }
           <View style={styles.donutContainer}>
             <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
               <Circle
@@ -64,7 +64,7 @@ const TeamReportScreen = ({ navigation }) => {
               <Text style={styles.donutLabel}>Moderado</Text>
             </View>
           </View>
-          {/* --- FIM DO GRÁFICO --- */}
+          { }
 
           <View style={styles.metricsRow}>
             <View style={styles.metricItem}>

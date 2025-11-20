@@ -200,10 +200,10 @@ const styles = StyleSheet.create({
   logoutButton: {
     backgroundColor: '#FFF',
     borderWidth: 1,
-    borderColor: '#E53E3E', // Vermelho para "sair"
+    borderColor: '#E53E3E',  
   },
   logoutButtonText: {
-    color: '#E53E3E', // Texto vermelho
+    color: '#E53E3E',  
   },
 });
 

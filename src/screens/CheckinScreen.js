@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Modal, Animated
 import { Ionicons, Feather } from '@expo/vector-icons';
 import Button from '../components/Button';
 
-// Componente para o gráfico de onda de áudio (simulado)
 const AudioWave = () => {
   const bars = Array.from({ length: 20 }, (_, i) => i);
   const animatedValues = useState(bars.map(() => new Animated.Value(0)))[0];
@@ -28,7 +27,6 @@ const AudioWave = () => {
       });
     };
     animateBars();
-    // Limpar animações ao desmontar
     return () => animatedValues.forEach(anim => anim.stopAnimation());
   }, []);
 
@@ -42,11 +40,11 @@ const AudioWave = () => {
             {
               height: animatedValues[index].interpolate({
                 inputRange: [0, 1],
-                outputRange: [10, 50], // Altura mínima e máxima das barras
+                outputRange: [10, 50],
               }),
               transform: [{ translateY: animatedValues[index].interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, -20], // Simula uma pequena variação vertical
+                outputRange: [0, -20], 
               })}]
             },
           ]}
@@ -85,7 +83,6 @@ const CheckinScreen = ({ navigation }) => {
 
   const handleStopRecording = () => {
     setIsRecording(false);
-    // Simula a análise e mostra o resultado após parar a gravação
     setTimeout(() => {
       setRecordingModalVisible(false);
       setResultModalVisible(true);
@@ -111,7 +108,6 @@ const CheckinScreen = ({ navigation }) => {
         <Text style={styles.placeholderText}>Carregando Check-in...</Text>
       </View>
 
-      {/* Modal Inicial: Escolher Voz ou Texto */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -150,7 +146,6 @@ const CheckinScreen = ({ navigation }) => {
         </View>
       </Modal>
 
-      {/* Modal de Gravação */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -181,7 +176,6 @@ const CheckinScreen = ({ navigation }) => {
               Descreva seu dia ou como está se sentindo. Fale por pelo menos 15 segundos.
             </Text>
 
-            {/* Simulação da onda de áudio */}
             <AudioWave />
             <Text style={styles.recordingTimer}>{formatTime(recordingTime)}</Text>
 
@@ -193,7 +187,6 @@ const CheckinScreen = ({ navigation }) => {
         </View>
       </Modal>
 
-      {/* Modal de Resultado da Análise */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -379,7 +372,6 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 25,
   },
-  // Estilos para o Modal de Resultado
   resultTitle: {
     fontSize: 22,
     fontWeight: 'bold',
@@ -422,7 +414,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#00A389',
     justifyContent: 'center',
     alignItems: 'center',
-    opacity: 0.8, // Para dar um toque de profundidade
+    opacity: 0.8, 
   },
   breathingCircleText: {
     fontSize: 16,

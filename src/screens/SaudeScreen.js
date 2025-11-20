@@ -325,7 +325,6 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingBottom: 120, 
     flexGrow: 1, 
-    // alignItems: 'center', // Este era o BUG. Foi removido.
   },
   mainTitle: { fontSize: 24, fontWeight: 'bold', color: '#333', alignSelf: 'flex-start' },
   mainSubtitle: { fontSize: 16, color: '#666', marginBottom: 30, alignSelf: 'flex-start' },

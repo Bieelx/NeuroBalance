@@ -293,7 +293,7 @@ const RenderSelectorView = memo(({
 const RenderBreathingView = memo(({ onBack, onClose }) => {
   const [status, setStatus] = useState('Pronto para começar?');
   const [isExercising, setIsExercising] = useState(false);
-  const scaleAnim = useRef(new Animated.Value(0.75)).current; // Inicia em 0.75 (144px / 192px)
+  const scaleAnim = useRef(new Animated.Value(0.75)).current;  
   const timeouts = useRef([]);
 
   const stopAllAnimations = () => {
@@ -310,7 +310,7 @@ const RenderBreathingView = memo(({ onBack, onClose }) => {
 
     setStatus('Inspire');
     Animated.timing(scaleAnim, {
-      toValue: 1, // Anima para 1 (192px)
+      toValue: 1,  
       duration: inspireTime,
       useNativeDriver: true,
     }).start();
@@ -322,7 +322,7 @@ const RenderBreathingView = memo(({ onBack, onClose }) => {
     timeouts.current.push(setTimeout(() => {
       setStatus('Expire');
       Animated.timing(scaleAnim, {
-        toValue: 0.75, // Anima de volta para 0.75 (144px)
+        toValue: 0.75,  
         duration: expireTime,
         useNativeDriver: true,
       }).start();
@@ -408,7 +408,7 @@ const RenderBreathingView = memo(({ onBack, onClose }) => {
   );
 });
 
-// --- COMPONENTE PRINCIPAL ---
+ 
 
 const CheckinModal = ({ visible, onClose, navigation }) => {
   const [view, setView] = useState('selector');
@@ -774,7 +774,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   moodButtonSelected: {
-    // Cor aplicada dinamicamente
+     
   },
   moodText: {
     fontSize: 12,

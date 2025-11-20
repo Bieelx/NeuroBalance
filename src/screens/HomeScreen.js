@@ -16,7 +16,6 @@ const getUserName = () => {
   return 'Alex'; 
 };
 
-// Componente para os "pontos" de sequência
 const StreakDots = () => (
   <View style={styles.dotsContainer}>
     <View style={[styles.dot, styles.dotActive]} />
@@ -97,7 +96,6 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        {/* --- NOVO CARD DE FREQUÊNCIA --- */}
         <View style={styles.streakCard}>
           <Text style={styles.streakNumber}>5</Text>
           <Text style={styles.streakLabel}>dias de sequência</Text>
@@ -114,7 +112,6 @@ const HomeScreen = ({ navigation }) => {
             </View>
           </View>
         </View>
-        {/* --- FIM DO NOVO CARD --- */}
 
         <View style={styles.infoCard}>
           <View style={styles.cardIcon}>
@@ -144,7 +141,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    paddingBottom: 100, // Aumentar padding inferior
+    paddingBottom: 100, 
   },
   header: {
     flexDirection: 'row',
@@ -253,7 +250,6 @@ const styles = StyleSheet.create({
     marginBottom: 20, 
   },
 
-  // --- ESTILOS DO CARD DE FREQUÊNCIA ---
   streakCard: {
     backgroundColor: '#FFFFFF',
     borderRadius: 16,
@@ -316,7 +312,6 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontWeight: '500',
   },
-  // --- FIM DOS ESTILOS ---
 
   infoCard: {
     flexDirection: 'row',
@@ -356,11 +351,11 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   footer: {
-    justifyContent: 'center', // Centraliza o footer
+    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingVertical: 20, // Padding vertical
-    marginTop: 'auto', // Empurra para o final
+    paddingVertical: 20,
+    marginTop: 'auto', 
   },
   footerText: {
     marginLeft: 8,
